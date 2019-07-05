@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SkinCol.Data;
 
 namespace SkinCol.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190705214405_CreateMaterialController    ")]
+    partial class CreateMaterialController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,29 +186,6 @@ namespace SkinCol.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SkinCol.Models.FacturaInsumos", b =>
-                {
-                    b.Property<int>("FacturaInsumosID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Cantidad");
-
-                    b.Property<decimal>("Costo");
-
-                    b.Property<int>("MaterialID");
-
-                    b.Property<int>("ProveedorID");
-
-                    b.HasKey("FacturaInsumosID");
-
-                    b.HasIndex("MaterialID");
-
-                    b.HasIndex("ProveedorID");
-
-                    b.ToTable("FacturaInsumos");
-                });
-
             modelBuilder.Entity("SkinCol.Models.Material", b =>
                 {
                     b.Property<int>("MaterialID")
@@ -285,19 +264,6 @@ namespace SkinCol.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SkinCol.Models.FacturaInsumos", b =>
-                {
-                    b.HasOne("SkinCol.Models.Material", "Material")
-                        .WithMany()
-                        .HasForeignKey("MaterialID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SkinCol.Models.Proveedor", "Proveedor")
-                        .WithMany()
-                        .HasForeignKey("ProveedorID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

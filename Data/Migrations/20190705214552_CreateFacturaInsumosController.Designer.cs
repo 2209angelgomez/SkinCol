@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SkinCol.Data;
 
 namespace SkinCol.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190705214552_CreateFacturaInsumosController")]
+    partial class CreateFacturaInsumosController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,10 +202,6 @@ namespace SkinCol.Data.Migrations
 
                     b.HasKey("FacturaInsumosID");
 
-                    b.HasIndex("MaterialID");
-
-                    b.HasIndex("ProveedorID");
-
                     b.ToTable("FacturaInsumos");
                 });
 
@@ -285,19 +283,6 @@ namespace SkinCol.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SkinCol.Models.FacturaInsumos", b =>
-                {
-                    b.HasOne("SkinCol.Models.Material", "Material")
-                        .WithMany()
-                        .HasForeignKey("MaterialID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SkinCol.Models.Proveedor", "Proveedor")
-                        .WithMany()
-                        .HasForeignKey("ProveedorID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
