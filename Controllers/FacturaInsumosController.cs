@@ -22,7 +22,8 @@ namespace SkinCol.Controllers
         // GET: FacturaInsumos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.FacturaInsumos.ToListAsync());
+            var lista = _context.FacturaInsumos.Include(p => p.Proveedor).Include(m => m.Material);
+            return View(await lista.ToListAsync());
         }
 
         // GET: FacturaInsumos/Details/5
@@ -33,7 +34,7 @@ namespace SkinCol.Controllers
                 return NotFound();
             }
 
-            var facturaInsumos = await _context.FacturaInsumos
+            var facturaInsumos = await _context.FacturaInsumos.Include(p => p.Proveedor).Include(m => m.Material)
                 .FirstOrDefaultAsync(m => m.FacturaInsumosID == id);
             if (facturaInsumos == null)
             {
@@ -46,6 +47,8 @@ namespace SkinCol.Controllers
         // GET: FacturaInsumos/Create
         public IActionResult Create()
         {
+            ViewData["ProveedorID"] = new SelectList(_context.Proveedor, "ProveedorID", "Nombre");
+            ViewData["MaterialID"] = new SelectList(_context.Material, "MaterialID", "Nombre");
             return View();
         }
 
@@ -74,6 +77,8 @@ namespace SkinCol.Controllers
             }
 
             var facturaInsumos = await _context.FacturaInsumos.FindAsync(id);
+            ViewData["ProveedorID"] = new SelectList(_context.Proveedor, "ProveedorID", "Nombre", facturaInsumos.Proveedor);
+            ViewData["MaterialID"] = new SelectList(_context.Material, "MaterialID", "Nombre", facturaInsumos.Material);
             if (facturaInsumos == null)
             {
                 return NotFound();
