@@ -1,7 +1,7 @@
 ﻿@model SkinCol.Models.FacturaInsumos
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles Factura";
 }
 
 <h2>Details</h2>
@@ -14,13 +14,13 @@
             @Html.DisplayNameFor(model => model.ProveedorID)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ProveedorID)
+            @Html.DisplayFor(model => model.Proveedor.Nombre)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.MaterialID)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.MaterialID)
+            @Html.DisplayFor(model => model.Material.Nombre)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Cantidad)
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.FacturaInsumosID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.FacturaInsumosID">Editar</a> |
+    <a asp-action="Index">Regresar</a>
 </div>
