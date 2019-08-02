@@ -1,0 +1,17 @@
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+.primero{
+    margin-top: 110px;
+    
+}
+.pro{
+    float: left;
+}
+.pri{
+  border-right: solid 2px;
+}
