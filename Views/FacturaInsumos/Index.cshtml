@@ -4,55 +4,6 @@
     ViewData["Title"] = "Facturas Insumos";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-<table class="table"  >
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProveedorID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaterialID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Costo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProveedorID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaterialID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Costo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FacturaInsumosID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FacturaInsumosID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FacturaInsumosID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
             <!-- Heading -->
