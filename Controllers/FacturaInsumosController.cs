@@ -62,7 +62,7 @@ namespace SkinCol.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(facturaInsumos);
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(facturaInsumos);

@@ -1,41 +1,80 @@
 ﻿@model IEnumerable<SkinCol.Models.Material>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Materiales";
 }
 
-<h2>Index</h2>
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+        <!-- Heading -->
+        <div class="card mb-4 wow fadeIn">
+            <!--Card content-->
+            <div class="card-body d-sm-flex justify-content-between">
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span>Materiales</span>
+                </h4>
+                <div class="row justify-content-end">
+                    <div class="col-md-12 ">
+                        <a asp-action="Create" class="btn btn-success btn-sm "><i class="far fa-plus-square"></i> Agregar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Heading -->
+        <!--Grid row-->
+        <div class="row wow fadeIn">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaterialID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaterialID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaterialID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <!--Grid column-->
+            <div class="col-md-12 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        <!-- Table  -->
+                        <table class="table table-striped">
+                            <thead class="blue-grey lighten-4">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Nombre)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Descripcion)
+                                    </th>
+                                    <th>
+                                        Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Descripcion)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.MaterialID" class="btn btn-primary btn-sm text-white"><i class="fas fa-pen-square"></i> Editar</a> |
+                                            <a asp-action="Details" asp-route-id="@item.MaterialID" class="btn btn-warning btn-sm text-white"><i class="fas fa-info-circle"></i> Detalles</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.MaterialID" class="btn btn-danger btn-sm text-white"><i class="fas fa-minus-circle"></i> Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <!-- Table  -->
+                    </div>
+                    <!--Card content-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+</main>
